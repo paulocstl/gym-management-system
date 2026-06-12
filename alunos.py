@@ -1,3 +1,4 @@
+'''Sistema de cadastro de alunos'''
 import pickle
 
 arquivo = "alunos.pkl"
