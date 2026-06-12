@@ -1,3 +1,7 @@
+import os
+import pickle
+
+ARQUIVO = "treinos.pkl"
 
 def carregar():
     if os.path.exists(ARQUIVO):

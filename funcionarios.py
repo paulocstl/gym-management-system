@@ -61,5 +61,3 @@ def menu_funcionarios():
             cadastro_funcionarios()
 
 #perguntar se tem algo a mudar para o professor             
-
-print('teste')
