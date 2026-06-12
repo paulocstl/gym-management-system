@@ -9,7 +9,7 @@ except:
     alunos = []
 
 while True:
-    print("\n=== SISTEMA DE ALUNOS ===")
+    print("SISTEMA DE ALUNOS")
     print("1 - Cadastrar aluno")
     print("2 - Listar alunos")
     print("3 - Sair")
