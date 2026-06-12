@@ -33,7 +33,7 @@ while True:
         print("Aluno cadastrado com sucesso!")
 
     elif opcao == "2":
-        print("\n=== ALUNOS CADASTRADOS ===")
+        print("ALUNOS CADASTRADOS")
 
         if len(alunos) == 0:
             print("Nenhum aluno cadastrado.")
