@@ -1,50 +1,48 @@
 '''Sistema de cadastro de alunos'''
-import pickle
 
-arquivo = "alunos.pkl"
+from database import conexao, cursor
 
-try:
-    with open(arquivo, "rb") as f:
-        alunos = pickle.load(f)
-except:
-    alunos = []
+def menu_alunos():
 
-while True:
-    print("SISTEMA DE ALUNOS")
-    print("1 - Cadastrar aluno")
-    print("2 - Listar alunos")
-    print("3 - Sair")
+    while True:
+        print("SISTEMA DE ALUNOS")
+        print("1 - Cadastrar aluno")
+        print("2 - Listar alunos")
+        print("3 - Sair")
 
-    opcao = input("Escolha uma opção: ")
+        opcao = input("Escolha uma opção: ")
 
-    if opcao == "1":
-        nome = input("Nome do aluno: ")
-        idade = input("Idade: ")
+        if opcao == "1":
+            nome = input("Nome do aluno: ")
+            idade = input("Idade: ")
 
-        aluno = {
-            "nome": nome,
-            "idade": idade
-        }
+            cursor.execute(
+                "INSERT INTO alunos (nome, idade) VALUES (?, ?)",
+                (nome, idade)
+            )
 
-        alunos.append(aluno)
+            conexao.commit()
 
-        with open(arquivo, "wb") as f:
-            pickle.dump(alunos, f)
+            print("Aluno cadastrado com sucesso!")
 
-        print("Aluno cadastrado com sucesso!")
+        elif opcao == "2":
+            print("ALUNOS CADASTRADOS")
 
-    elif opcao == "2":
-        print("ALUNOS CADASTRADOS")
+            cursor.execute("SELECT nome, idade FROM alunos")
 
-        if len(alunos) == 0:
-            print("Nenhum aluno cadastrado.")
+            alunos = cursor.fetchall()
 
-        for aluno in alunos:
-            print(f"Nome: {aluno['nome']} | Idade: {aluno['idade']}")
+            if len(alunos) == 0:
+                print("Nenhum aluno cadastrado.")
 
-    elif opcao == "3":
-        print("Encerrando...")
-        break
+            else:
+                for aluno in alunos:
+                    print(f"Nome: {aluno[0]} | Idade: {aluno[1]}")
 
-    else:
-        print("Opção inválida!")
+        elif opcao == "3":
+            print("Encerrando...")
+            conexao.close()
+            break
+
+        else:
+            print("Opção inválida!")
