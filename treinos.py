@@ -137,7 +137,7 @@ def excluir_exercicio():
 
 def menu_exercicios():
     while True:
-        print("\n| EXERCÍCIOS |")
+        print("| EXERCÍCIOS |")
         print("1 - Cadastrar exercício")
         print("2 - Listar exercícios")
         print("3 - Editar exercício")
@@ -159,7 +159,6 @@ def menu_exercicios():
 
 
 def adicionar_exercicios_ao_treino(treino_id):
-    """Loop para adicionar 1 ou mais exercícios a um treino já existente."""
     cursor.execute("SELECT COALESCE(MAX(ordem), 0) FROM treino_exercicios WHERE treino_id = ?", (treino_id,))
     ordem = cursor.fetchone()[0] + 1
 
@@ -423,7 +422,7 @@ Observações: {registro[3]}
 
 def menu_treinos():
     while True:
-        print("\n| TREINOS |")
+        print("| TREINOS |")
         print("1 - Cadastrar treino")
         print("2 - Listar treinos")
         print("3 - Ver treino detalhado")
@@ -461,4 +460,3 @@ def menu_treinos():
 
 if __name__ == "__main__":
     menu_treinos()
-

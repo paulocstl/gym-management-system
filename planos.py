@@ -3,7 +3,7 @@ from database import conexao, cursor
 
 def cadastrar_plano():
 
-    print("\n=== Cadastro de Plano ===")
+    print("| Cadastro de Plano |")
 
     nome = input("Nome do plano: ")
 
@@ -25,12 +25,12 @@ def cadastrar_plano():
 
     conexao.commit()
 
-    print("\nPlano cadastrado com sucesso!")
+    print(" Plano cadastrado com sucesso!")
 
 
 def listar_planos():
 
-    print("\n=== PLANOS CADASTRADOS ===")
+    print("| PLANOS CADASTRADOS |")
 
     cursor.execute("""
         SELECT id, nome, valor, duracao
@@ -55,7 +55,7 @@ def listar_planos():
 
 def editar_plano():
 
-    print("\n=== Editar Plano ===")
+    print("| Editar Plano |")
 
     listar_planos()
 
@@ -112,7 +112,7 @@ def editar_plano():
 
 def excluir_plano():
 
-    print("\n=== Excluir Plano ===")
+    print("| Excluir Plano |")
 
     listar_planos()
 
@@ -136,7 +136,7 @@ def menu_planos():
 
     while True:
 
-        print("\n=== MENU DE PLANOS ===")
+        print("| MENU DE PLANOS |")
 
         print("1 - Cadastrar Plano")
 

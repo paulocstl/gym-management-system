@@ -6,7 +6,7 @@ from planos import menu_planos
 
 while True:
 
-    print("\n=== FITFLOW ===")
+    print("| FITFLOW |")
     print("1 - Alunos")
     print("2 - Funcionários")
     print("3 - Treinos")

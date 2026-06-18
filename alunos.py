@@ -27,7 +27,7 @@ def listar_alunos():
         print("Nenhum aluno cadastrado.")
         return
 
-    print("\n===== ALUNOS =====")
+    print("| ALUNOS |")
 
     for aluno in alunos:
         print(
@@ -105,7 +105,7 @@ def excluir_aluno():
 
 def menu_alunos():
     while True:
-        print("\n===== SISTEMA DE ALUNOS =====")
+        print("| SISTEMA DE ALUNOS |")
         print("1 - Cadastrar aluno")
         print("2 - Listar alunos")
         print("3 - Buscar aluno")

@@ -124,7 +124,7 @@ def menu_funcionarios():
 
     while True:
 
-        print("\n| FUNCIONÁRIOS |")
+        print("| FUNCIONÁRIOS |")
         print("1 - Cadastrar funcionário")
         print("2 - Listar funcionários")
         print("3 - Editar funcionário")
