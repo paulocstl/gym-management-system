@@ -27,3 +27,14 @@ CREATE TABLE IF NOT EXISTS funcionarios (
 """)
 
 conexao.commit()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS planos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    valor REAL NOT NULL,
+    duracao TEXT NOT NULL
+)
+""")
+
+conexao.commit()
