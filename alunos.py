@@ -132,7 +132,6 @@ def menu_alunos():
 
         elif opcao == "6":
             print("Encerrando sistema...")
-            conexao.close()
             break
 
         else:

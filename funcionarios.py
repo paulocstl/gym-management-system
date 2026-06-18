@@ -1,6 +1,5 @@
 from database import conexao, cursor
 
-
 def cadastro_funcionarios():
     print('| Cadastro de Funcionário |')
 
@@ -25,7 +24,7 @@ def cadastro_funcionarios():
 def listar_funcionarios():
 
     cursor.execute("""
-        SELECT nome, cpf, cargo, salario, telefone, horario
+        SELECT id, nome, cpf, cargo, salario, telefone, horario
         FROM funcionarios
     """)
 
@@ -37,12 +36,13 @@ def listar_funcionarios():
 
     for funcionario in funcionarios:
         print(f'''
-Nome: {funcionario[0]}
-CPF: {funcionario[1]}
-Cargo: {funcionario[2]}
-Salário: R$ {funcionario[3]}
-Telefone: {funcionario[4]}
-Horário: {funcionario[5]}
+ID: {funcionario[0]}
+Nome: {funcionario[1]}
+CPF: {funcionario[2]}
+Cargo: {funcionario[3]}
+Salário: R$ {funcionario[4]}
+Telefone: {funcionario[5]}
+Horário: {funcionario[6]}
 ''')
 
 

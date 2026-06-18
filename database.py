@@ -33,15 +33,12 @@ CREATE TABLE IF NOT EXISTS planos (
 )
 """)
 
-conexao.commit()
-
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS exercicios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     grupo_muscular TEXT,
-    equipamento TEXT,
-    descricao TEXT
+    equipamento TEXT
 )
 """)
 
@@ -52,37 +49,28 @@ CREATE TABLE IF NOT EXISTS treinos (
     objetivo TEXT,
     nivel TEXT,
     aluno_id INTEGER,
-    data_criacao TEXT,
-    FOREIGN KEY (aluno_id) REFERENCES alunos(id)
+    funcionario_id INTEGER,
+
+    FOREIGN KEY (aluno_id)
+        REFERENCES alunos(id),
+
+    FOREIGN KEY (funcionario_id)
+        REFERENCES funcionarios(id)
 )
 """)
 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS treino_exercicios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    treino_id INTEGER NOT NULL,
-    exercicio_id INTEGER NOT NULL,
-    series INTEGER,
-    repeticoes INTEGER,
-    carga REAL,
-    descanso_segundos INTEGER,
-    ordem INTEGER,
-    FOREIGN KEY (treino_id) REFERENCES treinos(id),
-    FOREIGN KEY (exercicio_id) REFERENCES exercicios(id)
+    treino_id INTEGER,
+    exercicio_id INTEGER,
+
+    FOREIGN KEY (treino_id)
+        REFERENCES treinos(id),
+
+    FOREIGN KEY (exercicio_id)
+        REFERENCES exercicios(id)
 )
 """)
 
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS historico_execucoes (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    treino_id INTEGER NOT NULL,
-    aluno_id INTEGER,
-    data_execucao TEXT,
-    concluido INTEGER,
-    observacoes TEXT,
-    FOREIGN KEY (treino_id) REFERENCES treinos(id),
-    FOREIGN KEY (aluno_id) REFERENCES alunos(id)
-)
-""")
-
-conexao.commit()
+conexao.commit()    
