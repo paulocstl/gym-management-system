@@ -3,18 +3,18 @@ from database import conexao, cursor
 
 def cadastrar_plano():
 
-    print('| Cadastro de Plano |')
+    print("\n=== Cadastro de Plano ===")
 
-    nome = input('Nome do plano: ')
+    nome = input("Nome do plano: ")
 
     try:
-        valor = float(input('Valor do plano (R$): '))
+        valor = float(input("Valor do plano (R$): "))
     except ValueError:
-        print('Valor inválido.')
+        print("Valor inválido!")
         return
 
     duracao = input(
-        'Duração (Mensal, Trimestral, Semestral, Anual): '
+        "Duração (Mensal, Trimestral, Semestral, Anual): "
     )
 
     cursor.execute("""
@@ -25,10 +25,12 @@ def cadastrar_plano():
 
     conexao.commit()
 
-    print('Plano cadastrado com sucesso!')
+    print("\nPlano cadastrado com sucesso!")
 
 
 def listar_planos():
+
+    print("\n=== PLANOS CADASTRADOS ===")
 
     cursor.execute("""
         SELECT id, nome, valor, duracao
@@ -38,29 +40,29 @@ def listar_planos():
     planos = cursor.fetchall()
 
     if not planos:
-        print('Nenhum plano cadastrado.')
+        print("Nenhum plano cadastrado.")
         return
 
     for plano in planos:
 
-        print(f'''
-ID: {plano[0]}
-Nome: {plano[1]}
-Valor: R$ {plano[2]}
-Duração: {plano[3]}
-''')
+        print(
+            f"{plano[0]}. "
+            f"{plano[1]} - "
+            f"R${plano[2]:.2f} - "
+            f"{plano[3]}"
+        )
 
 
 def editar_plano():
 
-    print('| Editar Plano |')
+    print("\n=== Editar Plano ===")
 
     listar_planos()
 
     try:
-        id_plano = int(input('Digite o ID do plano: '))
+        id_plano = int(input("Digite o ID do plano: "))
     except ValueError:
-        print('ID inválido.')
+        print("ID inválido!")
         return
 
     cursor.execute(
@@ -71,16 +73,16 @@ def editar_plano():
     plano = cursor.fetchone()
 
     if not plano:
-        print('Plano não encontrado.')
+        print("Plano não encontrado.")
         return
 
-    print('Deixe em branco para manter o valor atual.')
+    print("Deixe em branco para manter o valor atual.")
 
-    nome = input('Novo nome: ')
+    nome = input("Novo nome: ")
 
-    valor = input('Novo valor: ')
+    valor = input("Novo valor: ")
 
-    duracao = input('Nova duração: ')
+    duracao = input("Nova duração: ")
 
     if nome:
 
@@ -105,19 +107,19 @@ def editar_plano():
 
     conexao.commit()
 
-    print('Plano editado com sucesso!')
+    print("Plano atualizado com sucesso!")
 
 
 def excluir_plano():
 
-    print('| Excluir Plano |')
+    print("\n=== Excluir Plano ===")
 
     listar_planos()
 
     try:
-        id_plano = int(input('Digite o ID do plano: '))
+        id_plano = int(input("Digite o ID do plano: "))
     except ValueError:
-        print('ID inválido.')
+        print("ID inválido!")
         return
 
     cursor.execute(
@@ -127,26 +129,26 @@ def excluir_plano():
 
     conexao.commit()
 
-    print('Plano excluído com sucesso!')
+    print("Plano excluído com sucesso!")
 
 
 def menu_planos():
 
     while True:
 
-        print("\n| PLANOS |")
+        print("\n=== MENU DE PLANOS ===")
 
-        print("1 - Cadastrar plano")
+        print("1 - Cadastrar Plano")
 
-        print("2 - Listar planos")
+        print("2 - Listar Planos")
 
-        print("3 - Editar plano")
+        print("3 - Editar Plano")
 
-        print("4 - Excluir plano")
+        print("4 - Excluir Plano")
 
         print("0 - Voltar")
 
-        opcao = input("Escolha: ")
+        opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
 
