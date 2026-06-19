@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS exercicios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     grupo_muscular TEXT,
-    equipamento TEXT
+    equipamento TEXT,
+    descricao TEXT
 )
 """)
 
