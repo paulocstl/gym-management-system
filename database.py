@@ -8,7 +8,10 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS alunos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    idade INTEGER NOT NULL
+    idade INTEGER NOT NULL,
+    cpf TEXT,
+    email TEXT,
+    telefone TEXT
 )
 """)
 
